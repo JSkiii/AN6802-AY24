@@ -17,7 +17,7 @@ def ethical_test():
 
 @app.route("/test_result",methods=["POST","GET"])
 def test_result():
-    q = request.form.get("answer")
+    answer = request.form.get("answer")
     if answer == "false":
         return(render_template("pass.html"))
     elif answer == "true":
