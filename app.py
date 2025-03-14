@@ -11,6 +11,10 @@ def main():
     user_name = request.form.get("q")
     return(render_template("main.html"))
 
+@app.route("/foodexp",methods=["POST","GET"])
+def foodexp():
+    return(render_template("foodexp.html"))
+
 @app.route("/ethical_test",methods=["POST","GET"])
 def ethical_test():
     return(render_template("ethical_test.html"))
@@ -22,6 +26,7 @@ def test_result():
         return(render_template("pass.html"))
     elif answer == "true":
         return(render_template("fail.html"))
-   
+
+
 if __name__ == "__main__":
     app.run()
