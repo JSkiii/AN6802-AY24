@@ -1,5 +1,4 @@
 from flask import Flask,request,render_template
-
 app = Flask(__name__)
 
 @app.route("/",methods=["POST","GET"])
@@ -14,6 +13,11 @@ def main():
 @app.route("/foodexp",methods=["POST","GET"])
 def foodexp():
     return(render_template("foodexp.html"))
+    
+@app.route("/foodexp-pred",methods=["POST","GET"])
+def foodexp_pred():
+    q = float(request.form.get("q"))
+    return(render_template("foodexp_pred.html",r=((q*0.4851)+147.4)))
 
 @app.route("/ethical_test",methods=["POST","GET"])
 def ethical_test():
@@ -26,7 +30,6 @@ def test_result():
         return(render_template("pass.html"))
     elif answer == "true":
         return(render_template("fail.html"))
-
 
 if __name__ == "__main__":
     app.run()
