@@ -3,6 +3,7 @@ import sqlite3
 import datetime
 
 app = Flask(__name__)
+flag = 1
 
 @app.route("/",methods=["POST","GET"])
 def index():
@@ -10,6 +11,7 @@ def index():
 
 @app.route("/main",methods=["POST","GET"])
 def main():
+    global flag 
     if flag == 1:
         t = datetime.datetime.now()
         user_name = request.form.get("q")
