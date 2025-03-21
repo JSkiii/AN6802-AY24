@@ -1,8 +1,15 @@
 from flask import Flask,request,render_template
 import sqlite3
 import datetime
+import google.generativeai as genai
+import os
+
+api = "AIzaSyBRDMco7wragB1Jg7nddW3O2RQb090yh5w"
+model = genai.GenerativeModel("gemini-1.5-flash")
+genai.configure(api_key=api)
 
 app = Flask(__name__)
+
 flag = 1
 
 @app.route("/",methods=["POST","GET"])
@@ -44,6 +51,15 @@ def test_result():
         return(render_template("pass.html"))
     elif answer == "true":
         return(render_template("fail.html"))
+    
+@app.route("/FAQ",methods=["POST","GET"])
+def FAQ():    
+    return(render_template("FAQ.html"))
+
+@app.route("/FAQ1",methods=["POST","GET"])
+def FAQ1():    
+    r = model.generate_content("Factors of Profit")
+    return(render_template("FAQ1.html",r=r.candidates[0].content.parts[0]))
     
 @app.route("/userLog",methods=["POST","GET"])
 def userLog():
