@@ -3,6 +3,7 @@ import sqlite3
 import datetime
 import google.generativeai as genai
 import os
+import wikipedia
 
 api = "AIzaSyBRDMco7wragB1Jg7nddW3O2RQb090yh5w"
 model = genai.GenerativeModel("gemini-1.5-flash")
