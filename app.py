@@ -39,7 +39,11 @@ def foodexp():
 @app.route("/foodexp1",methods=["POST","GET"])
 def foodexp1():
     return(render_template("foodexp1.html"))
-     
+
+@app.route("/foodexp2",methods=["POST","GET"])
+def foodexp2():
+    return(render_template("foodexp2.html"))
+
 @app.route("/foodexp_pred",methods=["POST","GET"])
 def foodexp_pred():
     q = float(request.form.get("q"))
